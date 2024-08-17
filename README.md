@@ -1,6 +1,6 @@
 # Data Validator
 
-[![Actions Status](https://github.com/bsa2609/java-project-71/actions/workflows/main.yml/badge.svg)](https://github.com/bsa2609/java-project-71/actions)
+[![Actions Status](https://github.com/bsa2609/java-project-78/actions/workflows/main.yml/badge.svg)](https://github.com/bsa2609/java-project-78/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f14fca2790c900fdf6be/maintainability)](https://codeclimate.com/github/bsa2609/java-project-78/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f14fca2790c900fdf6be/test_coverage)](https://codeclimate.com/github/bsa2609/java-project-78/test_coverage)
 [![Actions Status](https://github.com/bsa2609/java-project-78/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/bsa2609/java-project-78/actions)
