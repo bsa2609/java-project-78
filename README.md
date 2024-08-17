@@ -6,7 +6,7 @@
 [![Actions Status](https://github.com/bsa2609/java-project-78/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/bsa2609/java-project-78/actions)
 
 ### Description:
-A data validator is a program for checking the correctness of values of any type.
+The data validator is a program for checking the correctness of values of any type.
 
 ## Start
 
