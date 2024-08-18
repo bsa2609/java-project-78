@@ -8,22 +8,10 @@
 ### Description:
 The data validator is a program for checking the correctness of values of any type.
 
-## Start
-
-```bash
-make
-```
-
 ## Setup
 
 ```bash
 make build
-```
-
-## Run
-
-```bash
-make run
 ```
 
 ## Run checkstyle
