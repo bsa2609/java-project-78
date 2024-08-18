@@ -4,13 +4,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 //import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ValidatorTest {
     @Test
     @DisplayName("validate a text string without requirements")
-    void testValidateStringWithoutRequirement() throws Exception {
+    void testValidateStringWithoutRequirements() throws Exception {
         var validator = new Validator();
         var schema = validator.string();
 
@@ -19,7 +21,7 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("validate a text string with required requirement")
+    @DisplayName("validate a text string with \"required\" requirement")
     void testValidateStringWithRequired() throws Exception {
         var validator = new Validator();
         var schema = validator.string();
@@ -33,7 +35,7 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("validate a text string with minimum length requirement")
+    @DisplayName("validate a text string with \"minLength\" requirement")
     void testValidateStringWithMinLength() throws Exception {
         var validator = new Validator();
         var schema = validator.string();
@@ -51,7 +53,7 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("validate a text string with contains requirement")
+    @DisplayName("validate a text string with \"contains\" requirement")
     void testValidateStringWithContains() throws Exception {
         var validator = new Validator();
         var schema = validator.string();
@@ -100,7 +102,7 @@ public class ValidatorTest {
 
     @Test
     @DisplayName("validate a number without requirements")
-    void testValidateNumberWithoutRequirement() throws Exception {
+    void testValidateNumberWithoutRequirements() throws Exception {
         var validator = new Validator();
         var schema = validator.number();
 
@@ -111,7 +113,7 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("validate a number with required requirement")
+    @DisplayName("validate a number with \"required\" requirement")
     void testValidateNumberWithRequired() throws Exception {
         var validator = new Validator();
         var schema = validator.number();
@@ -125,7 +127,7 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("validate a number with positive requirement")
+    @DisplayName("validate a number with \"positive\" requirement")
     void testValidateNumberWithPositive() throws Exception {
         var validator = new Validator();
         var schema = validator.number();
@@ -139,7 +141,7 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("validate a number with range requirement")
+    @DisplayName("validate a number with \"range\" requirement")
     void testValidateNumberWithRange() throws Exception {
         var validator = new Validator();
         var schema = validator.number();
@@ -186,5 +188,73 @@ public class ValidatorTest {
         assertTrue(schema.isValid(30));
         assertFalse(schema.isValid(19));
         assertFalse(schema.isValid(31));
+    }
+
+    @Test
+    @DisplayName("validate a map without requirements")
+    void testValidateMapWithoutRequirements() throws Exception {
+        var validator = new Validator();
+        var schema = validator.map();
+
+        assertTrue(schema.isValid(null));
+        assertTrue(schema.isValid(new HashMap<>()));
+    }
+
+    @Test
+    @DisplayName("validate a map with \"required\" requirement")
+    void testValidateMapWithRequired() throws Exception {
+        var validator = new Validator();
+        var schema = validator.map();
+
+        schema.required();
+
+        assertFalse(schema.isValid(null));
+        assertTrue(schema.isValid(new HashMap<>()));
+
+        var data = new HashMap<Object, Object>();
+        data.put("key1", "value1");
+        assertTrue(schema.isValid(data));
+    }
+
+    @Test
+    @DisplayName("validate a map with \"sizeof\" requirement")
+    void testValidateMapWithSizeof() throws Exception {
+        var validator = new Validator();
+        var schema = validator.map();
+
+        schema.sizeof(2);
+
+        var data = new HashMap<Object, Object>();
+        data.put("key1", "value1");
+        assertFalse(schema.isValid(data));
+
+        data.put("key2", "value2");
+        assertTrue(schema.isValid(data));
+    }
+
+    @Test
+    @DisplayName("validate a map with all requirements")
+    void testValidateMapWithAllRequirements() throws Exception {
+        var validator = new Validator();
+        var schema = validator.map();
+
+        assertTrue(schema.isValid(null));
+        assertTrue(schema.isValid(new HashMap<>()));
+
+        schema.required();
+
+        assertFalse(schema.isValid(null));
+        assertTrue(schema.isValid(new HashMap<>()));
+
+        var data = new HashMap<Object, Object>();
+        data.put("key1", "value1");
+        assertTrue(schema.isValid(data));
+
+        schema.sizeof(2);
+
+        assertFalse(schema.isValid(data));
+
+        data.put("key2", "value2");
+        assertTrue(schema.isValid(data));
     }
 }
