@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.schemas.BaseSchema;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -271,7 +272,7 @@ public class ValidatorTest {
         schemas.put("age", validator.number().required().positive());
         schemas.put("phoneNumbers", validator.map().required().sizeof(2));
 
-        schema.shape(schemas);
+        schema.shapeSeveralSchemes(schemas);
 
         Map<String, Object> human1 = new HashMap<>();
         human1.put("firstName", "John");
@@ -342,5 +343,34 @@ public class ValidatorTest {
         human8.put("phoneNumbers", Map.of(
                 "homeNumber", "8(111)222-33-44"));
         assertFalse(schema.isValid(human7));
+    }
+
+    @Test
+    @DisplayName("validate a shape with all requirements (only string schema)")
+    void testValidateShapeWithoutRequirementsOnlyStringSchema() throws Exception {
+        var validator = new Validator();
+        var schema = validator.map();
+
+        Map<String, BaseSchema<String>> schemas = new HashMap<>();
+
+        schemas.put("firstName", validator.string().required());
+        schemas.put("lastName", validator.string().required().minLength(2));
+
+        schema.shape(schemas);
+
+        Map<String, String> human1 = new HashMap<>();
+        human1.put("firstName", "John");
+        human1.put("lastName", "Smith");
+        assertTrue(schema.isValid(human1));
+
+        Map<String, String> human2 = new HashMap<>();
+        human2.put("firstName", "John");
+        human2.put("lastName", null);
+        assertFalse(schema.isValid(human2));
+
+        Map<String, String> human3 = new HashMap<>();
+        human3.put("firstName", "Anna");
+        human3.put("lastName", "B");
+        assertFalse(schema.isValid(human3));
     }
 }

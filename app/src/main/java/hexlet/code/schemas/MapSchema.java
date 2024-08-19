@@ -19,8 +19,13 @@ public class MapSchema extends BaseSchema<Map<String, Object>> {
         return this;
     }
 
-    public MapSchema shape(Map<String, Object> schemas) {
+    public MapSchema shapeSeveralSchemes(Map<String, Object> schemas) {
         super.addRequirement("shape", new MapShapeRequirement(schemas));
+        return this;
+    }
+
+    public MapSchema shape(Map<String, BaseSchema<String>> schemas) {
+        super.addRequirement("shape", new MapShapeRequirement(convertType(schemas)));
         return this;
     }
 
