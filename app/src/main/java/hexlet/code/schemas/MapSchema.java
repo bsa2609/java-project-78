@@ -15,12 +15,12 @@ public class MapSchema extends BaseSchema<Map<String, Object>> {
     }
 
     public MapSchema sizeof(int size) {
-        super.addRequirement("required", new MapSizeofRequirement(size));
+        super.addRequirement("sizeof", new MapSizeofRequirement(size));
         return this;
     }
 
     public MapSchema shape(Map<String, Object> schemas) {
-        super.addRequirement("required", new MapShapeRequirement(schemas));
+        super.addRequirement("shape", new MapShapeRequirement(schemas));
         return this;
     }
 
