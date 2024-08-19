@@ -8,8 +8,8 @@ import java.util.Map;
 public final class MapShapeRequirement implements Requirement<Map<String, Object>> {
     private final Map<String, Object> schemas;
 
-    public MapShapeRequirement(Map<String, Object> schemasForMap) {
-        this.schemas = schemasForMap;
+    public MapShapeRequirement(Map<String, Object> validationSchemas) {
+        this.schemas = validationSchemas;
     }
 
     @Override
