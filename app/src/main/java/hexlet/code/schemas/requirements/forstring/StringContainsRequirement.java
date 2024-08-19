@@ -5,8 +5,8 @@ import hexlet.code.schemas.requirements.Requirement;
 public final class StringContainsRequirement implements Requirement<String> {
     private final String subString;
 
-    public StringContainsRequirement(String newSubString) {
-        this.subString = newSubString;
+    public StringContainsRequirement(String subStringForString) {
+        this.subString = subStringForString;
     }
 
     @Override

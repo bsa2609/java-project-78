@@ -6,9 +6,9 @@ public final class NumberRangeRequirement implements Requirement<Integer> {
     private final int minNumber;
     private final int maxNumber;
 
-    public NumberRangeRequirement(int minNumber, int maxNumber) {
-        this.minNumber = minNumber;
-        this.maxNumber = maxNumber;
+    public NumberRangeRequirement(int minNumberForNumber, int maxNumberForNumber) {
+        this.minNumber = minNumberForNumber;
+        this.maxNumber = maxNumberForNumber;
     }
 
     @Override

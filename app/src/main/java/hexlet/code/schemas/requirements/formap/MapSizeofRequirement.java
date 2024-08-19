@@ -7,8 +7,8 @@ import java.util.Map;
 public final class MapSizeofRequirement implements Requirement<Map<String, Object>> {
     private final int size;
 
-    public MapSizeofRequirement(int size) {
-        this.size = size;
+    public MapSizeofRequirement(int sizeForMap) {
+        this.size = sizeForMap;
     }
 
     @Override
