@@ -12,10 +12,20 @@ public abstract class BaseSchema<T> {
         requirements = new HashMap<>();
     }
 
+    /**
+     * Adds a new validation requirement.
+     * @param name - requirement name
+     * @param requirement - validation requirement
+     */
     public void addRequirement(String name, Requirement<T> requirement) {
         requirements.put(name, requirement);
     }
 
+    /**
+     * Checks the value for the validity of the scheme.
+     * @param dataForValidation - data for validation
+     * @return - true if data is valid, else false
+     */
     public boolean isValid(Object dataForValidation) {
         return requirements.values().stream()
                 .allMatch(requirement -> requirement.check(convertType(dataForValidation)));
