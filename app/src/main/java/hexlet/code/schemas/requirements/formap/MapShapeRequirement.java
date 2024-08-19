@@ -5,8 +5,8 @@ import hexlet.code.schemas.requirements.Requirement;
 
 import java.util.Map;
 
-public class MapShapeRequirement implements Requirement<Map<String, Object>> {
-    public final Map<String, Object> schemas;
+public final class MapShapeRequirement implements Requirement<Map<String, Object>> {
+    private final Map<String, Object> schemas;
 
     public MapShapeRequirement(Map<String, Object> schemas) {
         this.schemas = schemas;

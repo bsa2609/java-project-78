@@ -342,7 +342,7 @@ public class ValidatorTest {
         human8.put("age", 14);
         human8.put("phoneNumbers", Map.of(
                 "homeNumber", "8(111)222-33-44"));
-        assertFalse(schema.isValid(human7));
+        assertFalse(schema.isValid(human8));
     }
 
     @Test
