@@ -5,8 +5,8 @@ import hexlet.code.schemas.requirements.Requirement;
 public final class StringMinLengthRequirement implements Requirement<String> {
     private final int minLength;
 
-    public StringMinLengthRequirement(int minLength) {
-        this.minLength = minLength;
+    public StringMinLengthRequirement(int minLengthForString) {
+        this.minLength = minLengthForString;
     }
 
     @Override
