@@ -280,6 +280,7 @@ public class ValidatorTest {
         human1.put("phoneNumbers", Map.of(
                 "homeNumber", "8(111)222-33-44",
                 "mobileNumber", "8(555)666-77-88"));
+        human1.put("description", "good guy");
         assertTrue(schema.isValid(human1));
 
         Map<String, Object> human2 = new HashMap<>();
