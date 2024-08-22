@@ -261,7 +261,7 @@ public class ValidatorTest {
 
     @Test
     @DisplayName("validate a shape with all requirements")
-    void testValidateShapeWithoutRequirementsOnlyStringSchema() throws Exception {
+    void testValidateShapeWithAllRequirements() throws Exception {
         var validator = new Validator();
         var schema = validator.map();
 
